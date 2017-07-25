@@ -1,0 +1,22 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.wisefn.dls.dls.fragment.Option4Fragment">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/opt_4_swipe">
+
+        <android.support.v7.widget.RecyclerView
+            app:layoutManager="LinearLayoutManager"
+            android:id="@+id/test_rcView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</FrameLayout>
