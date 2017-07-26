@@ -6,6 +6,7 @@ import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -52,6 +53,7 @@ public class Option2Fragment extends Fragment {
     private TextView opt_2_date, opt_2_time, opt_2_product, opt_2_cmpN;
     private EditText opt_2_csl_eT, opt_2_etTitle, opt_2_content;
     private ListView opt_2_nameListView;
+    private ConstraintLayout opt_2_loading;
 
     private String customer_ID, selectPrd_Code;
 
@@ -104,28 +106,21 @@ public class Option2Fragment extends Fragment {
         opt_2_csl_eT = (EditText)view.findViewById(R.id.opt_2_csl_eT);
         opt_2_etTitle = (EditText)view.findViewById(R.id.opt_2_etTitle);
         opt_2_content = (EditText)view.findViewById(R.id.opt_2_content);
+        opt_2_loading = (ConstraintLayout)view.findViewById(R.id.opt_2_loading);
         opt_2_date.setText(defaultDate);
         opt_2_time.setText(defaultTime);
         opt_2_nameListView = (ListView)view.findViewById(R.id.opt_2_nameListView);
 
+        customerSrchListDataList = new ArrayList<>();
+
         if(MainActivity.CSL == Constants.DATABASE.CUSTOMERSRCHLIST_N){
             makeCSList();
         } else {
+            opt_2_loading.setVisibility(View.GONE);
             Log.e("CSL//NOT CALL", MainActivity.customerSrchListDataArrayList.get(0).getWATSEARCH());
+            cslAdapter = new CSLAdapter(getContext(), customerSrchListDataList);
+            opt_2_nameListView.setAdapter(cslAdapter);
         }
-
-        customerSrchListDataList = new ArrayList<>();
-
-        opt_2_csl_eT.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if(b == true){
-                    opt_2_nameListView.setVisibility(View.VISIBLE);
-                } else {
-                    opt_2_nameListView.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
 
         opt_2_csl_eT.addTextChangedListener(new TextWatcher() {
             @Override
@@ -142,19 +137,8 @@ public class Option2Fragment extends Fragment {
             public void afterTextChanged(Editable editable) {
 
                 String text = opt_2_csl_eT.getText().toString();
+                Log.e("afterText : ", text);
                 cslAdapter.fillter(text);
-
-            }
-        });
-
-        opt_2_nameListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                customer_ID = ((CustomerSrchListData)cslAdapter.getItem(i)).getCusMemID().toString();
-                opt_2_cmpN.setText(((CustomerSrchListData)cslAdapter.getItem(i)).getCusCmpNM());
-                opt_2_csl_eT.setText(((CustomerSrchListData)cslAdapter.getItem(i)).getWATTEXT());
-                opt_2_csl_eT.clearFocus();
 
             }
         });
@@ -183,6 +167,7 @@ public class Option2Fragment extends Fragment {
 
                     cslAdapter = new CSLAdapter(getContext(), customerSrchListDataList);
                     opt_2_nameListView.setAdapter(cslAdapter);
+                    opt_2_loading.setVisibility(View.GONE);
                 } else {
                     Toast.makeText(getContext(), "worng", Toast.LENGTH_SHORT).show();
                 }
@@ -223,6 +208,18 @@ public class Option2Fragment extends Fragment {
     }
 
     private void onClickMethod(){
+
+        opt_2_csl_eT.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b == true){
+                    opt_2_nameListView.setVisibility(View.VISIBLE);
+                } else {
+                    opt_2_nameListView.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
         opt_2_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -242,6 +239,18 @@ public class Option2Fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 DialogSelectOption();
+            }
+        });
+
+        opt_2_nameListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                customer_ID = ((CustomerSrchListData)cslAdapter.getItem(i)).getCusMemID().toString();
+                opt_2_cmpN.setText(((CustomerSrchListData)cslAdapter.getItem(i)).getCusCmpNM());
+                opt_2_csl_eT.setText(((CustomerSrchListData)cslAdapter.getItem(i)).getWATTEXT());
+                opt_2_csl_eT.clearFocus();
+
             }
         });
 

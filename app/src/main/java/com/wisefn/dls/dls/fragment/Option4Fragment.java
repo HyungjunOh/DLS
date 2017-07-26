@@ -58,6 +58,7 @@ public class Option4Fragment extends Fragment implements SwipeRefreshLayout.OnRe
 
         initOpt4();
 
+        opt_4_swipe.setRefreshing(false);
     }
 
     public void initOpt4() {

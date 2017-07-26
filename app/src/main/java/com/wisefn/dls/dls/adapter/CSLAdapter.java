@@ -1,6 +1,7 @@
 package com.wisefn.dls.dls.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,6 +78,8 @@ public class CSLAdapter extends BaseAdapter {
     public void fillter(String charText){
 
         customerSrchListDataList.clear();
+
+        Log.e("cslAdapter : ", charText);
 
         if (charText.length() == 0){
             customerSrchListDataList.addAll(arrayList);

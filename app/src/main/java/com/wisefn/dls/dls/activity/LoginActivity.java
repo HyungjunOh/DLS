@@ -1,6 +1,8 @@
 package com.wisefn.dls.dls.activity;
 
 import android.content.Intent;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +24,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.wisefn.dls.dls.activity.MainActivity.CURRENT_TAG;
+
 public class LoginActivity extends AppCompatActivity {
 
     private Button btn_button;
@@ -31,6 +35,10 @@ public class LoginActivity extends AppCompatActivity {
     private LoginList loginList;
 
     private String loginCheck, loginDesc, userName;
+
+    public static int countBackFlag;
+    private final long FINISH_INTERVAL_TIME = 2000;
+    private long backpressedTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +111,22 @@ public class LoginActivity extends AppCompatActivity {
                 android.util.Log.e("error", "Connection erro");
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        long tempTime = System.currentTimeMillis();
+        long intervalTime = tempTime - backpressedTime;
+
+        if (0 <= intervalTime && FINISH_INTERVAL_TIME >= intervalTime) {
+//            super.onBackPressed();
+            finishAffinity();
+            return;
+        } else {
+            backpressedTime = tempTime;
+            Toast.makeText(getApplicationContext(), "한번 더 뒤로가기를 누르시면 \n 종료됩니다.", Toast.LENGTH_SHORT).show();
+        }
     }
 
 

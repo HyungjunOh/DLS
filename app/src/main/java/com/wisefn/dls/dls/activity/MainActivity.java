@@ -93,6 +93,8 @@ public class MainActivity extends AppCompatActivity {
 
 //        loadNavHeader();
 
+        setNav_hd_name(USER_ID);
+
         setUpNavigationView();
 
         if (savedInstanceState == null) {
@@ -114,8 +116,14 @@ public class MainActivity extends AppCompatActivity {
         if(requestCode == 9271 && resultCode == 3917) {
             USER_ID = data.getStringExtra("data_id");
             LOGIN_ID = data.getStringExtra("login_id");
+
+            Constants.LOGIN.LOGIN_NAME = data.getStringExtra("data_id");
+            Constants.LOGIN.LOGIN_ID = data.getStringExtra("login_id");
+
             Log.e("Intent test", USER_ID);
             setNav_hd_name(USER_ID);
+
+            setToolbarTitle();
         }
     }
 
@@ -290,23 +298,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     public void homeButtonClicked(int btn_id){

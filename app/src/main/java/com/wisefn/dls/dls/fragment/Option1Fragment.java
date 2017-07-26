@@ -6,6 +6,7 @@ import android.net.Uri;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -31,11 +32,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class Option1Fragment extends Fragment {
+public class Option1Fragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
     private ArrayList<MktListData> mktListDataArrayList;
     private RecyclerView opt_1_rcView;
     private MktRcAdapter mAdapter;
+    private SwipeRefreshLayout opt_1_swipe;
 
     public Option1Fragment() {    }
 
@@ -45,10 +47,29 @@ public class Option1Fragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_option1, container, false);
 
         opt_1_rcView = (RecyclerView) view.findViewById(R.id.opt_1_rcView);
+        opt_1_swipe = (SwipeRefreshLayout) view.findViewById(R.id.opt_1_swipe);
+
+        initOp1();
+
+        return view;
+    }
+
+    @Override
+    public void onRefresh() {
+
+        initOp1();
+
+        opt_1_swipe.setRefreshing(false);
+
+    }
+
+    private void initOp1() {
+        opt_1_swipe.setOnRefreshListener(this);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         opt_1_rcView.setLayoutManager(layoutManager);
+
 
         mktListDataArrayList = new ArrayList<>();
         mAdapter = new MktRcAdapter(getActivity());
@@ -66,8 +87,6 @@ public class Option1Fragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-        return view;
     }
 
     private void makeList() {

@@ -24,7 +24,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
 
         <TextView
             android:id="@+id/cus_Cmp_NM"
@@ -40,7 +40,7 @@
 
         <TextView
             android:id="@+id/cus_Mem_PN_Mobile"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="30dp"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
@@ -52,16 +52,13 @@
 
         <ImageButton
             android:id="@+id/cus_btn_office_call"
-            android:layout_width="100dp"
+            android:layout_width="50dp"
             android:layout_height="30dp"
-            android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:background="@android:color/holo_green_dark"
             android:scaleType="centerInside"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cus_btn_mobile_call"
-            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@android:drawable/stat_sys_phone_call"
             app:layout_constraintRight_toLeftOf="@+id/cus_btn_office_msg"
             android:layout_marginRight="8dp" />
@@ -83,16 +80,16 @@
 
         <ImageButton
             android:id="@+id/cus_btn_mobile_call"
-            android:layout_width="100dp"
+            android:layout_width="50dp"
             android:layout_height="30dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:background="@android:color/holo_green_dark"
             android:scaleType="centerInside"
-            app:layout_constraintTop_toBottomOf="@+id/cus_Cmp_NM"
+            app:layout_constraintTop_toBottomOf="@+id/cus_Mem_Dept"
             app:srcCompat="@android:drawable/stat_sys_phone_call"
             app:layout_constraintRight_toLeftOf="@+id/cus_btn_mobile_msg"
-            android:layout_marginRight="16dp" />
+            android:layout_marginRight="8dp" />
 
         <TextView
             android:id="@+id/cus_Mem_NM"
@@ -109,41 +106,39 @@
 
         <TextView
             android:id="@+id/cus_Mem_PN_Office"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="30dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="14dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="TextView"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cus_Mem_PN_Mobile" />
 
         <ImageButton
             android:id="@+id/cus_btn_mobile_msg"
-            android:layout_width="100dp"
+            android:layout_width="50dp"
             android:layout_height="30dp"
+            android:layout_marginTop="8dp"
             android:background="@android:color/darker_gray"
             android:scaleType="centerInside"
+            app:layout_constraintTop_toBottomOf="@+id/cus_Mem_Dept"
             app:srcCompat="@android:drawable/sym_action_email"
-            android:layout_marginRight="28dp"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/cus_Mem_Dept" />
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent" />
 
         <ImageButton
             android:id="@+id/cus_btn_office_msg"
-            android:layout_width="100dp"
+            android:layout_width="50dp"
             android:layout_height="30dp"
-            android:layout_marginRight="28dp"
             android:layout_marginTop="8dp"
             android:background="@android:color/darker_gray"
             android:scaleType="centerInside"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cus_btn_mobile_msg"
-            app:srcCompat="@android:drawable/sym_action_email" />
+            app:srcCompat="@android:drawable/sym_action_email"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent" />
     </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

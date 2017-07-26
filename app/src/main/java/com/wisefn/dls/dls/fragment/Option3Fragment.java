@@ -81,10 +81,12 @@ public class Option3Fragment extends Fragment implements View.OnClickListener{
                 if(VISBLE_FLAG == true){
                     opt_3_btn_layout.setVisibility(View.GONE);
                     VISBLE_FLAG = false;
+                    opt_3_hide_hutton.setText("보이기");
                 }
                 else{
                     opt_3_btn_layout.setVisibility(View.VISIBLE);
                     VISBLE_FLAG = true;
+                    opt_3_hide_hutton.setText("숨기기");
                 }
 
             }
@@ -97,14 +99,20 @@ public class Option3Fragment extends Fragment implements View.OnClickListener{
         c_btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                customerDataArrayList = new ArrayList<>();
 
-                mAdapter = new CustomerAdapter(getActivity());
-                c_recycleView.setAdapter(mAdapter);
+                if(CLICK_FLAG == true){
 
-                name = c_search_editText.getText().toString();
+                    CLICK_FLAG = false;
 
-                makeCList(name);
+                    customerDataArrayList = new ArrayList<>();
+
+                    mAdapter = new CustomerAdapter(getActivity());
+                    c_recycleView.setAdapter(mAdapter);
+
+                    name = c_search_editText.getText().toString();
+
+                    makeCList(name);
+                }
             }
         });
 
@@ -160,6 +168,12 @@ public class Option3Fragment extends Fragment implements View.OnClickListener{
     }
 
     private void makeCList(String input) {
+
+        if(VISBLE_FLAG == true){
+            opt_3_btn_layout.setVisibility(View.GONE);
+            VISBLE_FLAG = false;
+            opt_3_hide_hutton.setText("보이기");
+        }
 
         String name = input;
 

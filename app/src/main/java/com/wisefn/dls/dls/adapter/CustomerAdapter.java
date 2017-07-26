@@ -62,17 +62,21 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.CHolde
         holder.cus_Mem_PN_Office.setText(item.getCusMemPNOffice());
 
         if(item.getCusMemPNMobile() == null || item.getCusMemPNMobile() == ""){
-            holder.cus_btn_mobile_call.setVisibility(View.INVISIBLE);
-            holder.cus_btn_mobile_msg.setVisibility(View.INVISIBLE);
+            holder.cus_Mem_PN_Mobile.setVisibility(View.GONE);
+            holder.cus_btn_mobile_call.setVisibility(View.GONE);
+            holder.cus_btn_mobile_msg.setVisibility(View.GONE);
         } else {
+            holder.cus_Mem_PN_Mobile.setVisibility(View.VISIBLE);
             holder.cus_btn_mobile_call.setVisibility(View.VISIBLE);
             holder.cus_btn_mobile_msg.setVisibility(View.VISIBLE);
         }
 
         if(item.getCusMemPNOffice() == null || item.getCusMemPNOffice() == ""){
-            holder.cus_btn_office_call.setVisibility(View.INVISIBLE);
-            holder.cus_btn_office_msg.setVisibility(View.INVISIBLE);
+            holder.cus_Mem_PN_Office.setVisibility(View.GONE);
+            holder.cus_btn_office_call.setVisibility(View.GONE);
+            holder.cus_btn_office_msg.setVisibility(View.GONE);
         } else {
+            holder.cus_Mem_PN_Office.setVisibility(View.VISIBLE);
             holder.cus_btn_office_call.setVisibility(View.VISIBLE);
             holder.cus_btn_office_msg.setVisibility(View.VISIBLE);
         }
