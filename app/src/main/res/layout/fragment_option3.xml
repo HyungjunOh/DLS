@@ -10,19 +10,21 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
         android:visibility="visible">
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/opt_3_btn_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="9dp"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/c_search_editText"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/c_search_editText">
+            android:layout_marginLeft="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintHorizontal_bias="0.5">
 
             <Button
                 android:id="@+id/opt_3_button_1"
@@ -49,14 +51,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
                 android:text="이"
                 app:layout_constraintLeft_toRightOf="@+id/opt_3_button_2"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="8dp"
+                app:layout_constraintRight_toRightOf="parent" />
 
             <Button
                 android:id="@+id/opt_3_button_4"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
@@ -82,60 +86,63 @@
                 android:layout_marginTop="8dp"
                 android:text="황"
                 app:layout_constraintLeft_toRightOf="@+id/opt_3_button_5"
-                app:layout_constraintTop_toBottomOf="@+id/opt_3_button_3" />
+                app:layout_constraintTop_toBottomOf="@+id/opt_3_button_3"
+                android:layout_marginRight="8dp"
+                app:layout_constraintRight_toRightOf="parent" />
+
         </android.support.constraint.ConstraintLayout>
 
         <EditText
             android:id="@+id/c_search_editText"
-            android:layout_width="150dp"
-            android:layout_height="48dp"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
             android:background="@android:color/darker_gray"
             android:hint="고객명"
             android:inputType="text"
             android:textSize="24sp"
             android:textStyle="bold"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/c_btn_search"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/c_btn_search"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content"
             android:text="검색"
-            app:layout_constraintLeft_toRightOf="@+id/c_search_editText"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintRight_toLeftOf="@+id/opt_3_hide_hutton"
+            android:layout_marginRight="8dp" />
+
+        <Button
+            android:id="@+id/opt_3_hide_hutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="숨기기"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/c_recycleView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.54"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/opt_3_btn_layout" />
+            app:layout_constraintTop_toBottomOf="@+id/opt_3_btn_layout"
+            app:layout_constraintVertical_bias="0.0">
 
-        <Button
-            android:id="@+id/opt_3_hide_hutton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:text="숨기기"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        </android.support.v7.widget.RecyclerView>
 
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>

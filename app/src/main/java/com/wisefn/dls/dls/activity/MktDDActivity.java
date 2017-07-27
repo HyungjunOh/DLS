@@ -28,10 +28,10 @@ import retrofit2.Response;
 
 public class MktDDActivity extends AppCompatActivity{
 
-    private TextView mktdd_title, mktdd_cmp_nm, mktdd_mem_nm, mktdd_w_nm, mktdd_v_tm, mktdd_w_detail;
+    private TextView mktdd_title, mktdd_cmp_nm, mktdd_mem_nm, mktdd_w_nm, mktdd_v_tm, mktdd_w_detail, mktdd_product;
     private Button mktdd_btn_check;
     private MktDetailData mktDetailData;
-    private String id;
+    private String id, product;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,6 +40,7 @@ public class MktDDActivity extends AppCompatActivity{
 
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
+        product = intent.getStringExtra("product");
 
         getSupportActionBar().setTitle("상세보기");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -51,6 +52,7 @@ public class MktDDActivity extends AppCompatActivity{
         mktdd_v_tm = (TextView)findViewById(R.id.mktdd_v_tm);
         mktdd_w_detail = (TextView)findViewById(R.id.mktdd_w_detail);
         mktdd_btn_check = (Button)findViewById(R.id.mktdd_btn_check);
+        mktdd_product = (TextView)findViewById(R.id.mktdd_product);
 
         mktDetailData = new MktDetail().getMktDetailData();
 
@@ -91,6 +93,7 @@ public class MktDDActivity extends AppCompatActivity{
                     mktdd_w_nm.setText(mktDetailData.getMktWriteNM());
                     mktdd_v_tm.setText(mktDetailData.getVisitTM());
                     mktdd_w_detail.setText(mktDetailData.getMktWriteDetail());
+                    mktdd_product.setText(product);
 
                 } else {
                     Log.e("error", "wrong error");

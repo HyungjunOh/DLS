@@ -81,9 +81,11 @@ public class Option1Fragment extends Fragment implements SwipeRefreshLayout.OnRe
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                 String mktListDetail_ID = String.valueOf(mktListDataArrayList.get(position).getMktWriteID());
+                String product_NM = mktListDataArrayList.get(position).getProductNM();
 
                 Intent intent = new Intent(getContext(), MktDDActivity.class);
                 intent.putExtra("id", mktListDetail_ID);
+                intent.putExtra("product", product_NM);
                 startActivity(intent);
             }
         });
