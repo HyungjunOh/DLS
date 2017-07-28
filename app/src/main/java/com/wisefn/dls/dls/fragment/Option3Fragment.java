@@ -36,6 +36,7 @@ public class Option3Fragment extends Fragment implements View.OnClickListener{
     private Button opt_3_button_1, opt_3_button_2, opt_3_button_3, opt_3_button_4, opt_3_button_5, opt_3_button_6;
 
     private ConstraintLayout opt_3_btn_layout;
+    private ConstraintLayout opt_3_loading;
 
     private ImageButton iB_office, iB_mobile;
     private EditText c_search_editText;
@@ -61,6 +62,8 @@ public class Option3Fragment extends Fragment implements View.OnClickListener{
         iB_mobile = (ImageButton) view.findViewById(R.id.cus_btn_mobile_call);
         iB_office = (ImageButton) view.findViewById(R.id.cus_btn_office_call);
         opt_3_hide_hutton = (Button) view.findViewById(R.id.opt_3_hide_hutton);
+        opt_3_loading = (ConstraintLayout)view.findViewById(R.id.opt_3_loading);
+        opt_3_loading.setVisibility(View.GONE);
 
         opt_3_button_1 = (Button) view.findViewById(R.id.opt_3_button_1);
         opt_3_button_2 = (Button) view.findViewById(R.id.opt_3_button_2);
@@ -134,31 +137,24 @@ public class Option3Fragment extends Fragment implements View.OnClickListener{
             switch (view.getId()){
                 case R.id.opt_3_button_1:
                     name = "김";
-                    Toast.makeText(getContext(), name, Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.opt_3_button_2:
                     name = "박";
-                    Toast.makeText(getContext(), name, Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.opt_3_button_3:
                     name = "이";
-                    Toast.makeText(getContext(), name, Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.opt_3_button_4:
                     name = "정";
-                    Toast.makeText(getContext(), name, Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.opt_3_button_5:
                     name = "최";
-                    Toast.makeText(getContext(), name, Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.opt_3_button_6:
                     name = "황";
-                    Toast.makeText(getContext(), name, Toast.LENGTH_SHORT).show();
                     break;
                 default :
                     name = "";
-                    Toast.makeText(getContext(), name, Toast.LENGTH_SHORT).show();
                     break;
             }
             makeCList(name);
@@ -174,6 +170,8 @@ public class Option3Fragment extends Fragment implements View.OnClickListener{
             VISBLE_FLAG = false;
             opt_3_hide_hutton.setText("보이기");
         }
+
+        opt_3_loading.setVisibility(View.VISIBLE);
 
         String name = input;
 
@@ -191,6 +189,8 @@ public class Option3Fragment extends Fragment implements View.OnClickListener{
                     mAdapter.setCustomerDataList(customerDataArrayList);
 
                     CLICK_FLAG = true;
+
+                    opt_3_loading.setVisibility(View.GONE);
 
                 } else {
                     Toast.makeText(getContext(), "worng", Toast.LENGTH_SHORT).show();
