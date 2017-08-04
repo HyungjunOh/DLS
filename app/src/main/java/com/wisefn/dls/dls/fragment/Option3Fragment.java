@@ -1,5 +1,6 @@
 package com.wisefn.dls.dls.fragment;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -15,7 +16,10 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.wisefn.dls.dls.R;
+import com.wisefn.dls.dls.Utility.ItemClickSupport;
+import com.wisefn.dls.dls.activity.MktDDActivity;
 import com.wisefn.dls.dls.adapter.CustomerAdapter;
+import com.wisefn.dls.dls.adapter.Opt3Adapter;
 import com.wisefn.dls.dls.bean.CustomerList.CustomerData;
 import com.wisefn.dls.dls.bean.CustomerList;
 import com.wisefn.dls.dls.Retrofit.MktListService;
@@ -27,13 +31,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Option3Fragment extends Fragment implements View.OnClickListener{
+public class Option3Fragment extends Fragment {
 
     private ArrayList<CustomerData> customerDataArrayList;
     private RecyclerView c_recycleView;
     private CustomerAdapter mAdapter;
 
-    private Button opt_3_button_1, opt_3_button_2, opt_3_button_3, opt_3_button_4, opt_3_button_5, opt_3_button_6;
+    private Opt3Adapter opt3Adapter;
+    private ArrayList<String> arrayList;
+    private RecyclerView opt_3_itemRView;
 
     private ConstraintLayout opt_3_btn_layout;
     private ConstraintLayout opt_3_loading;
@@ -59,24 +65,12 @@ public class Option3Fragment extends Fragment implements View.OnClickListener{
         c_search_editText = (EditText) view.findViewById(R.id.c_search_editText);
         c_btn_search = (Button) view.findViewById(R.id.c_btn_search);
         c_recycleView = (RecyclerView) view.findViewById(R.id.c_recycleView);
+        opt_3_itemRView = (RecyclerView)view.findViewById(R.id.opt_3_itemRView);
         iB_mobile = (ImageButton) view.findViewById(R.id.cus_btn_mobile_call);
         iB_office = (ImageButton) view.findViewById(R.id.cus_btn_office_call);
         opt_3_hide_hutton = (Button) view.findViewById(R.id.opt_3_hide_hutton);
         opt_3_loading = (ConstraintLayout)view.findViewById(R.id.opt_3_loading);
         opt_3_loading.setVisibility(View.GONE);
-
-        opt_3_button_1 = (Button) view.findViewById(R.id.opt_3_button_1);
-        opt_3_button_2 = (Button) view.findViewById(R.id.opt_3_button_2);
-        opt_3_button_3 = (Button) view.findViewById(R.id.opt_3_button_3);
-        opt_3_button_4 = (Button) view.findViewById(R.id.opt_3_button_4);
-        opt_3_button_5 = (Button) view.findViewById(R.id.opt_3_button_5);
-        opt_3_button_6 = (Button) view.findViewById(R.id.opt_3_button_6);
-        opt_3_button_1.setOnClickListener(this);
-        opt_3_button_2.setOnClickListener(this);
-        opt_3_button_3.setOnClickListener(this);
-        opt_3_button_4.setOnClickListener(this);
-        opt_3_button_5.setOnClickListener(this);
-        opt_3_button_6.setOnClickListener(this);
 
         opt_3_hide_hutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +88,44 @@ public class Option3Fragment extends Fragment implements View.OnClickListener{
 
             }
         });
+
+        arrayList = new ArrayList<>();
+        arrayList.add("김일봉");
+        arrayList.add("박종");
+        arrayList.add("이");
+        arrayList.add("정희");
+        arrayList.add("최재");
+        arrayList.add("오");
+        arrayList.add("황");
+        arrayList.add("이성윤");
+        arrayList.add("강");
+        arrayList.add("윤");
+        arrayList.add("최준");
+        arrayList.add("김");
+        arrayList.add("정창");
+        arrayList.add("홍성민");
+        arrayList.add("최");
+
+        LinearLayoutManager hlayoutManager = new LinearLayoutManager(this.getActivity());
+        hlayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        opt_3_itemRView.setLayoutManager(hlayoutManager);
+        opt3Adapter = new Opt3Adapter(getActivity(), arrayList);
+        opt_3_itemRView.setAdapter(opt3Adapter);
+
+        ItemClickSupport.addTo(opt_3_itemRView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+
+                customerDataArrayList = new ArrayList<>();
+                mAdapter = new CustomerAdapter(getActivity());
+                c_recycleView.setAdapter(mAdapter);
+
+                String name = arrayList.get(position);
+
+                makeCList(name);
+            }
+        });
+
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -120,47 +152,6 @@ public class Option3Fragment extends Fragment implements View.OnClickListener{
         });
 
         return view;
-    }
-
-    @Override
-    public void onClick(View view) {
-
-        if(CLICK_FLAG == true){
-
-            CLICK_FLAG = false;
-
-            customerDataArrayList = new ArrayList<>();
-
-            mAdapter = new CustomerAdapter(getActivity());
-            c_recycleView.setAdapter(mAdapter);
-            String name;
-            switch (view.getId()){
-                case R.id.opt_3_button_1:
-                    name = "김";
-                    break;
-                case R.id.opt_3_button_2:
-                    name = "박";
-                    break;
-                case R.id.opt_3_button_3:
-                    name = "이";
-                    break;
-                case R.id.opt_3_button_4:
-                    name = "정";
-                    break;
-                case R.id.opt_3_button_5:
-                    name = "최";
-                    break;
-                case R.id.opt_3_button_6:
-                    name = "황";
-                    break;
-                default :
-                    name = "";
-                    break;
-            }
-            makeCList(name);
-
-        }
-
     }
 
     private void makeCList(String input) {

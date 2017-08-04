@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
             Log.e("Intent test", USER_ID);
             setNav_hd_name(USER_ID);
 
-            setToolbarTitle();
+//            setToolbarTitle();
         }
     }
 
@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
 
         selectNavMenu();
 
-        setToolbarTitle();
+//        setToolbarTitle();
 
         if (getSupportFragmentManager().findFragmentByTag(CURRENT_TAG) != null) {
             drawer.closeDrawers();

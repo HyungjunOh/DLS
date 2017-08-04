@@ -31,7 +31,7 @@ public class HomeFragment extends Fragment {
         imageView2 = view.findViewById(R.id.home_img_view_2);
         imageView3 = view.findViewById(R.id.home_img_view_3);
         imageView4 = view.findViewById(R.id.home_img_view_4);
-        imageView5 = view.findViewById(R.id.home_img_view_main);
+//        imageView5 = view.findViewById(R.id.home_img_view_main);
 
         setOnTouch();
 
@@ -74,28 +74,28 @@ public class HomeFragment extends Fragment {
                 return false;
             }
         });
-        imageView4.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-                    imageView4.setColorFilter(0xaa111111, PorterDuff.Mode.SRC_OVER);
-                } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
-                    imageView4.setColorFilter(0x00000000, PorterDuff.Mode.SRC_OVER);
-                }
-                return false;
-            }
-        });
-        imageView5.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-                    imageView5.setColorFilter(0xaa111111, PorterDuff.Mode.SRC_OVER);
-                } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
-                    imageView5.setColorFilter(0x00000000, PorterDuff.Mode.SRC_OVER);
-                }
-                return false;
-            }
-        });
+//        imageView4.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View view, MotionEvent motionEvent) {
+//                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+//                    imageView4.setColorFilter(0xaa111111, PorterDuff.Mode.SRC_OVER);
+//                } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+//                    imageView4.setColorFilter(0x00000000, PorterDuff.Mode.SRC_OVER);
+//                }
+//                return false;
+//            }
+//        });
+//        imageView5.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View view, MotionEvent motionEvent) {
+//                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+//                    imageView5.setColorFilter(0xaa111111, PorterDuff.Mode.SRC_OVER);
+//                } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+//                    imageView5.setColorFilter(0x00000000, PorterDuff.Mode.SRC_OVER);
+//                }
+//                return false;
+//            }
+//        });
     }
 
     private void setOnClick(){
@@ -119,12 +119,12 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        imageView4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity)getActivity()).homeButtonClicked(R.id.nav_option_4);
-            }
-        });
+//        imageView4.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ((MainActivity)getActivity()).homeButtonClicked(R.id.nav_option_4);
+//            }
+//        });
     }
 
 }
